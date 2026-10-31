@@ -1,0 +1,33 @@
+{% extends "gc3_app/base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">VISION BTP</h1>
+        <p class="text-muted">listes des ouvriers retenue pour la semaine du 22 au 28 octobre</p>
+    </div>
+
+    <div class="row">
+        {% for p in personnes %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary">{{ p.nom }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Statut : {{ p.statut }}</h6>
+                        <p class="card-text mt-3">"{{ p.message }}"</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 text-muted small">
+                        Contact : {{ p.email }} | {{ p.telephone }}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Aucune personne n'est sélectionnée pour le moment sur la page d'accueil.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
